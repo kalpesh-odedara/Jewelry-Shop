@@ -1,10 +1,11 @@
-﻿ <%@ Page Language="C#" AutoEventWireup="true" CodeFile="Admin.aspx.cs" Inherits="Admin" %>
+ <%@ Page Language="C#" AutoEventWireup="true" CodeFile="Admin.aspx.cs" Inherits="Admin" ResponseEncoding="utf-8" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title>Admin Dashboard | Shree Jewelers</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
@@ -76,6 +77,9 @@
                 <div class="nav-item" onclick="showSection('loginData', this)"><i class="fas fa-users"></i> Login Data</div>
                 <div class="nav-item" onclick="showSection('contactData', this)"><i class="fas fa-envelope"></i> Contact Messages</div>
                 <div class="nav-item" onclick="showSection('feedbackData', this)"><i class="fas fa-star"></i> Feedback Data</div>
+                <div class="nav-item" onclick="showSection('goldData', this)"><i class="fas fa-coins"></i> GOLD</div>
+                <div class="nav-item" onclick="showSection('silverData', this)"><i class="fas fa-ring"></i> SILVER</div>
+                <div class="nav-item" onclick="showSection('diamondData', this)"><i class="fas fa-gem"></i> DIAMOND</div>
                 <div class="nav-item" onclick="showSection('uploadOffer', this)"><i class="fas fa-upload"></i> Upload Offer</div>
                 <div style="margin-top: auto;">
                     <asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" style="background:none; border:1px solid #333; color:white; width:100%; padding:10px; cursor:pointer;" />
@@ -160,6 +164,60 @@
                                 <asp:BoundField DataField="FullName" HeaderText="Name" />
                                 <asp:BoundField DataField="Email" HeaderText="Email" />
                                 <asp:BoundField DataField="Message" HeaderText="Message" />
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+                </div>
+
+                <div id="goldData" class="section-panel">
+                    <div class="card">
+                        <h3 style="font-family:'Playfair Display'; margin-bottom:1rem;">Gold Jewelry Inventory</h3>
+                        <asp:GridView ID="gvGold" runat="server" AutoGenerateColumns="False" CssClass="admin-grid" GridLines="None">
+                            <Columns>
+                                <asp:BoundField DataField="ProductName" HeaderText="Product" />
+                                <asp:BoundField DataField="Price" HeaderText="Price" HtmlEncode="false" />
+                                <asp:BoundField DataField="Category" HeaderText="Category" />
+                                <asp:TemplateField HeaderText="Image">
+                                    <ItemTemplate>
+                                        <asp:Image ID="imgProd" runat="server" ImageUrl='<%# Eval("ImagePath") %>' Width="50px" Height="50px" style="object-fit:cover; border-radius:4px;" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+                </div>
+
+                <div id="silverData" class="section-panel">
+                    <div class="card">
+                        <h3 style="font-family:'Playfair Display'; margin-bottom:1rem;">Silver Jewelry Inventory</h3>
+                        <asp:GridView ID="gvSilver" runat="server" AutoGenerateColumns="False" CssClass="admin-grid" GridLines="None">
+                            <Columns>
+                                <asp:BoundField DataField="ProductName" HeaderText="Product" />
+                                <asp:BoundField DataField="Price" HeaderText="Price" HtmlEncode="false" />
+                                <asp:BoundField DataField="Category" HeaderText="Category" />
+                                <asp:TemplateField HeaderText="Image">
+                                    <ItemTemplate>
+                                        <asp:Image ID="imgSilver" runat="server" ImageUrl='<%# Eval("ImagePath") %>' Width="50px" Height="50px" style="object-fit:cover; border-radius:4px;" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+                </div>
+
+                <div id="diamondData" class="section-panel">
+                    <div class="card">
+                        <h3 style="font-family:'Playfair Display'; margin-bottom:1rem;">Diamond Jewelry Inventory</h3>
+                        <asp:GridView ID="gvDiamond" runat="server" AutoGenerateColumns="False" CssClass="admin-grid" GridLines="None">
+                            <Columns>
+                                <asp:BoundField DataField="ProductName" HeaderText="Product" />
+                                <asp:BoundField DataField="Price" HeaderText="Price" HtmlEncode="false" />
+                                <asp:BoundField DataField="Category" HeaderText="Category" />
+                                <asp:TemplateField HeaderText="Image">
+                                    <ItemTemplate>
+                                        <asp:Image ID="imgDimond" runat="server" ImageUrl='<%# Eval("ImagePath") %>' Width="50px" Height="50px" style="object-fit:cover; border-radius:4px;" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
                     </div>
